@@ -1,154 +1,182 @@
 <!doctype html>
 <html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff6ec">
-  <meta name="description" content="Bella's Learning Hub – theatre, writing, maths, thinking skills and chess in one happy place.">
-  <title>Bella's Learning Hub</title>
-  <style>
-    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#28324a;background:#fffaf5;font-synthesis:none}
-    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 6% 5%,#fff0cb 0,transparent 31%),radial-gradient(ellipse at 94% 15%,#edddff 0,transparent 29%),radial-gradient(ellipse at 80% 97%,#dbefff 0,transparent 39%),#fffaf5}
-    button,input{font:inherit}button,a{touch-action:manipulation}a{text-decoration:none;color:inherit}button{cursor:pointer}
-    .shell{max-width:1090px;margin:0 auto;padding:30px 23px 46px;min-height:100vh;display:flex;flex-direction:column}
-    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .brand{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:850;letter-spacing:.02em}.brand-icon{display:grid;place-items:center;width:40px;height:40px;background:#fff;border-radius:13px;box-shadow:0 5px 16px #b6a2961f;font-size:23px}
-    .setup-button{border:1px solid #e5dbce;background:#fffefa;color:#46506a;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;box-shadow:0 3px 10px #97877612}
-    .setup-button:hover{background:#fff0df}
-    header{text-align:center;margin:48px auto 35px;max-width:720px}.tagline{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;background:#fff;border:1px solid #f1e3db;border-radius:999px;color:#8f5472;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;box-shadow:0 4px 18px #ffddae35}
-    h1{font-size:clamp(2.45rem,6vw,4.6rem);line-height:1.12;letter-spacing:-.05em;margin:17px 0 12px;color:#303d64}h1 span{color:#ed8f72}
-    .subtitle{font-size:clamp(16px,2vw,19px);color:#64708a;margin:0}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:3px 0 26px}
-    .subject{position:relative;overflow:hidden;border:2px solid #fff;border-radius:26px;padding:20px 20px 23px;box-shadow:0 10px 24px #63708b16,0 2px 4px #63708b0b;display:flex;flex-direction:column;min-height:356px;transition:transform .18s,box-shadow .18s}
-    .subject:hover{transform:translateY(-4px);box-shadow:0 16px 31px #63708b25}.theatre{background:#ffe9e3}.writing{background:#e9e4ff}.maths{background:#dff3f4}.thinking{background:#e5f5db}.chess{background:#fff0cb}
-    .subject::before{content:"";position:absolute;width:175px;height:175px;top:-62px;right:-65px;background:#fff9;border-radius:50%}
-    .art{position:relative;display:flex;align-items:center;justify-content:center;min-height:145px;border-radius:20px;background:#fff8;margin-bottom:23px}
-    .art span{font-size:82px;filter:drop-shadow(0 8px 2px #76819919);line-height:1.4}
-    .mini{position:absolute;left:12px;top:12px;display:inline-flex;background:#fffafa;padding:6px 10px;border-radius:15px;font-size:11px;letter-spacing:.03em;color:#5b6381;font-weight:800}
-    .subject h2{position:relative;z-index:1;font-size:23px;line-height:1.2;letter-spacing:-.025em;margin:0 0 8px}.subject p{font-size:14px;line-height:1.55;color:#687188;margin:0 0 23px;flex:1}
-    .launch{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;color:#fff;background:#3b4666;border-radius:14px;padding:14px 15px;font-size:15px;font-weight:800;transition:filter .2s}
-    .launch:hover{filter:brightness(1.15)}.launch.unset{background:#fff;color:#515b75;border:1px solid #e2dbe0}
-    .note{background:#ffffffb8;border:1px solid #f0e9dc;border-radius:17px;padding:17px 20px;display:flex;gap:12px;align-items:center;color:#64708a;font-size:14px;line-height:1.55}
-    .note strong{color:#3f4a68}.note .symbol{font-size:25px}
-    footer{margin-top:auto;text-align:center;padding-top:32px;color:#9a9eab;font-size:12px}
-    dialog{border:none;border-radius:25px;width:min(94vw,570px);max-height:min(92vh,810px);padding:0;box-shadow:0 32px 95px #20294666;color:#2f3954;background:#fffefd}
-    dialog::backdrop{background:#27304b80;backdrop-filter:blur(4px)}
-    .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;background:#fff2e6;padding:24px 25px 20px}.modal-head h2{font-size:25px;margin:0 0 6px}.modal-head p{font-size:14px;line-height:1.4;color:#6a7188;margin:0}.close{border:0;background:#fff8;border-radius:11px;font-weight:800;font-size:22px;width:37px;height:37px;color:#58617a}
-    .modal-body{padding:23px 25px 25px}.field{display:block;margin-bottom:18px}.field span{font-size:14px;display:block;font-weight:760;margin-bottom:7px}.field input{outline:none;width:100%;border:2px solid #dfe1eb;border-radius:12px;padding:13px 13px;font-size:14px;color:#34415d;background:#fff}.field input:focus{border-color:#9a8fdb;box-shadow:0 0 0 3px #d9d3ff88}
-    .instructions{border-radius:13px;background:#f4f7fc;padding:14px 16px;color:#5a6680;font-size:13px;line-height:1.65;margin:3px 0 18px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}.btn{padding:12px 16px;border-radius:12px;font-weight:800;border:1px solid #dce1e9;background:white;color:#3f4b66;flex:1}.btn.primary{background:#485477;color:#fff;border-color:#485477}
-    #message{font-size:13px;color:#436859;min-height:18px;margin:12px 0 0}
-    @media(min-width:761px) and (max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));max-width:690px;margin-left:auto;margin-right:auto}.subject{min-height:326px}}
-    @media(max-width:760px){.shell{padding:18px 16px 30px}.topbar .brand{font-size:13px}header{margin:38px 0 30px}.cards{grid-template-columns:1fr;max-width:520px;width:100%;margin:0 auto 21px;gap:15px}.subject{min-height:0;display:grid;grid-template-columns:96px 1fr;grid-template-rows:auto auto auto;column-gap:17px;padding:15px}.subject .art{grid-row:1/4;min-height:118px;margin:0}.art span{font-size:48px}.mini{font-size:9px;padding:4px 6px;left:5px;top:5px}.subject h2{font-size:19px;margin-top:7px}.subject p{font-size:13px;margin:0 0 12px}.subject .launch{padding:12px;font-size:13px}.note{margin-top:0}.modal-head,.modal-body{padding-left:18px;padding-right:18px}}
-    @media(max-width:410px){.subject{grid-template-columns:82px 1fr;column-gap:12px}.subject .art{min-height:108px}.art span{font-size:42px}.subject h2{font-size:17px}.subject p{font-size:12px}.setup-button{font-size:12px;padding:9px 10px}}
-    @media(prefers-reduced-motion:reduce){.subject{transition:none}}
-  </style>
-  <script id="site-config" type="application/json">{"theatre":"https://sseliaswho-oss.github.io/Little-Star-Theater/","writing":"https://ai-writing-private.sseliaswho.workers.dev","maths":"https://sseliaswho-oss.github.io/Learn-Math-with-Bella/","thinking":"https://sseliaswho-oss.github.io/Thinking-Skills/","chess":"https://sseliaswho-oss.github.io/Chess_Club/"}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff8f1">
+<meta name="description" content="Bella's Learning Hub — all your learning adventures in one cheerful place.">
+<title>Bella's Learning Hub</title>
+<style>
+:root{color-scheme:light;font-family:ui-rounded,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#303951;background:#fffaf5;font-synthesis:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 7% 2%,#fff0c6 0,transparent 30%),radial-gradient(ellipse at 93% 12%,#e8e0ff 0,transparent 32%),radial-gradient(ellipse at 82% 100%,#e0f3ff 0,transparent 39%),#fffaf5}
+button,input,textarea,select{font:inherit}button{cursor:pointer}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #7970c7;outline-offset:3px}a{text-decoration:none;color:inherit}
+.shell{max-width:1110px;margin:auto;padding:28px 23px 43px;min-height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.015em;font-size:15px}.brand-icon{width:42px;height:42px;display:grid;place-items:center;background:#fff;border-radius:14px;font-size:23px;box-shadow:0 6px 16px #9c96a21e}
+.setup-button,.small-btn{border:1px solid #e6dace;background:#fffefa;color:#485270;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:780}.setup-button:hover,.small-btn:hover{background:#fff0e1}
+header{text-align:center;margin:43px auto 26px;max-width:750px}.tagline{display:inline-block;padding:9px 15px;background:#fff;border:1px solid #efe3dc;border-radius:99px;color:#a06180;font-size:12px;font-weight:820;letter-spacing:.07em;box-shadow:0 4px 18px #ffddae35}
+h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.12;letter-spacing:-.045em;margin:16px 0 12px;color:#334169}h1 span{color:#e68977}.subtitle{font-size:clamp(16px,2vw,19px);color:#6b758b;margin:0}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:5px 0 23px}.toolbar .count{color:#68748b;font-size:13px;font-weight:720}.search{border:1px solid #e3dfdc;border-radius:14px;background:#ffffffec;padding:11px 15px;width:min(100%,295px);min-width:190px;color:#303951;box-shadow:0 4px 15px #6b708515}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0 0 26px}
+.subject{position:relative;overflow:hidden;border:2px solid #fff;border-radius:26px;padding:19px;box-shadow:0 10px 24px #63708b16,0 2px 4px #63708b0a;display:flex;flex-direction:column;min-height:330px;transition:transform .18s,box-shadow .18s}
+.subject:hover{transform:translateY(-3px);box-shadow:0 16px 28px #63708b23}.subject::before{content:"";position:absolute;width:170px;height:170px;top:-67px;right:-66px;background:#ffffff80;border-radius:50%}.tone-peach{background:#ffe7e2}.tone-lilac{background:#e9e3ff}.tone-aqua{background:#ddf2f2}.tone-sun{background:#fff0c8}.tone-mint{background:#dff3df}.tone-sky{background:#deecff}.tone-rose{background:#ffe1ed}.tone-sand{background:#f3e9d7}
+.art{position:relative;display:flex;align-items:center;justify-content:center;min-height:134px;border-radius:20px;background:#ffffffb8;margin-bottom:20px}.art .emoji{font-size:77px;line-height:1.45;filter:drop-shadow(0 8px 2px #76819919)}.mini{position:absolute;left:12px;top:12px;display:inline-flex;background:#fffefcde;padding:6px 10px;border-radius:15px;font-size:10px;letter-spacing:.045em;color:#5b6381;font-weight:850;text-transform:uppercase;max-width:90%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.subject h2{position:relative;z-index:1;font-size:22px;letter-spacing:-.02em;line-height:1.22;margin:0 0 7px;overflow-wrap:anywhere}.subject p{font-size:14px;line-height:1.55;color:#637087;margin:0 0 16px;flex:1;overflow-wrap:anywhere}
+.launch{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;color:#fff;background:#3b4666;border-radius:14px;padding:13px;font-size:14px;font-weight:820;min-height:46px}.launch:hover{filter:brightness(1.12)}.launch.unset{background:#fffdfa;color:#515b75;border:1px solid #e1d9e0}
+.no-match{grid-column:1/-1;text-align:center;padding:30px;color:#637087;background:#fff;border-radius:18px}.note{background:#ffffffc5;border:1px solid #f0e9dc;border-radius:18px;padding:15px 20px;display:flex;gap:12px;align-items:center;color:#64708a;font-size:14px;line-height:1.55}.note strong{color:#3f4a68}.note .symbol{font-size:25px}footer{margin-top:auto;text-align:center;padding-top:28px;color:#959eaf;font-size:12px}
+dialog{border:0;border-radius:24px;width:min(95vw,735px);max-height:min(94vh,940px);padding:0;background:#fffefd;color:#33405b;box-shadow:0 30px 85px #20294666}dialog::backdrop{background:#222c4885;backdrop-filter:blur(3px)}.modal-head{background:#fff1e4;padding:23px 25px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.modal-head h2{margin:0 0 6px;font-size:24px}.modal-head p{margin:0;color:#6d7586;font-size:13px;line-height:1.5}.close{border:none;border-radius:10px;background:#ffffffcb;color:#657089;font-size:24px;width:36px;height:36px;flex:none}.modal-body{padding:22px 25px 26px;overflow:auto;max-height:calc(94vh - 108px)}
+.instructions{background:#f4f6fc;border-radius:12px;color:#5b6680;font-size:13px;line-height:1.6;padding:14px 16px;margin:0 0 17px}.manager-title{display:flex;gap:9px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:0 0 12px}.manager-title h3{margin:0;font-size:17px}.btn{border-radius:12px;border:1px solid #dbe0e8;background:#fff;color:#404d6d;padding:11px 14px;font-weight:780;font-size:13px;white-space:normal}.btn.primary{background:#485477;color:#fff;border-color:#485477}.btn.subtle{background:#f8f7ff}.btn.danger{color:#a5424c;border-color:#f1d2d2}.btn:hover{filter:brightness(.98)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.manager-list{display:grid;gap:8px;margin-bottom:16px}.manager-item{border:1px solid #e8e4e3;padding:11px 10px 11px 13px;border-radius:14px;background:#fff;display:flex;align-items:center;gap:10px}.manager-icon{font-size:27px;width:40px;flex:none;text-align:center}.manager-meta{min-width:0;flex:1}.manager-meta strong{display:block;font-size:14px;overflow-wrap:anywhere}.manager-meta small{display:block;color:#768097;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:11px;margin-top:3px}.manager-actions{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.icon-btn{width:32px;height:32px;border-radius:9px;background:#f7f8fc;border:1px solid #e9eaf2;font-size:15px;color:#506080}.icon-btn:hover{background:#ebeefe}.icon-btn:disabled{opacity:.32;cursor:not-allowed}.icon-btn.delete{color:#a74755}
+.edit-panel{border:1px solid #dce2ef;border-radius:17px;padding:17px;background:#fbfcff;margin:16px 0}.edit-panel h3{margin:0 0 15px;font-size:17px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:block;margin:0 0 12px;min-width:0}.field span{font-size:13px;display:block;font-weight:750;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;outline:none;border:1.5px solid #dce0e9;border-radius:11px;padding:11px 12px;font-size:14px;color:#35415a;background:#fff}.field textarea{min-height:65px;resize:vertical}.field.wide{grid-column:1/-1}.form-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}.publish-actions{display:flex;gap:9px;flex-wrap:wrap;border-top:1px solid #ece8e9;padding-top:16px}.publish-actions .btn{flex:1}.help{font-size:12px;line-height:1.65;color:#69748b;margin:12px 0 0}.status{font-size:13px;line-height:1.4;color:#446d53;min-height:18px;margin:12px 0 0}.status.error{color:#a33d48}.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(max-width:760px){.shell{padding:18px 16px 27px}header{margin:34px 0 25px}.cards{grid-template-columns:1fr;max-width:530px;width:100%;margin:0 auto 24px;gap:14px}.subject{min-height:0;display:grid;grid-template-columns:97px 1fr;grid-template-rows:auto auto auto;column-gap:16px;padding:14px}.subject .art{grid-row:1/4;min-height:120px;margin:0}.art .emoji{font-size:47px}.mini{font-size:9px;padding:4px 5px;left:5px;top:5px}.subject h2{font-size:19px;margin-top:6px}.subject p{font-size:13px;margin:0 0 11px}.subject .launch{padding:11px;font-size:13px}.add-card{min-height:132px;grid-template-columns:58px 1fr;text-align:left;justify-content:start;align-content:center;gap:12px}.add-card .add-icon{grid-row:1/3;width:56px;height:56px;font-size:30px}.add-card strong{align-self:end}.add-card span:last-child{align-self:start;font-size:12px}.toolbar{max-width:530px;width:100%;margin:0 auto 18px}.search{width:100%}.modal-head,.modal-body{padding-left:17px;padding-right:17px}.manager-item{flex-wrap:wrap}.manager-actions{margin-left:50px;width:calc(100% - 50px);justify-content:flex-start}}
+@media(max-width:440px){.subject{grid-template-columns:83px 1fr;column-gap:12px}.subject .art{min-height:111px}.art .emoji{font-size:42px}.subject h2{font-size:17px}.subject p{font-size:12px}.setup-button{font-size:12px;padding:9px 10px}.fields{grid-template-columns:1fr}.field.wide{grid-column:1}.publish-actions{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.subject{transition:none}html{scroll-behavior:auto}}
+</style>
+<script id="hub-config" type="application/json">{"version":2,"projects":[{"id":"theatre","name":"Little Star Theatre","emoji":"🎭","category":"Perform","description":"Become a star! Read, act, and explore exciting stories.","url":"https://sseliaswho-oss.github.io/Bella-Learning-Hub/theater","tone":"peach"},{"id":"writing","name":"Creative Writing","emoji":"📖","category":"Create","description":"Dream up amazing characters and write your own adventures.","url":"https://ai-writing-private.sseliaswho.workers.dev","tone":"lilac"},{"id":"maths","name":"Maths Quest","emoji":"🧩","category":"Solve","description":"Solve puzzles, spot patterns, and grow your maths superpowers.","url":"https://sseliaswho-oss.github.io/Bella-Learning-Hub/math","tone":"aqua"},{"id":"project-mwj2e9k4-62wnw","name":"Thinking Skills","emoji":"🧠","category":"Explore","description":"","url":"https://sseliaswho-oss.github.io/Bella-Learning-Hub/thinking","tone":"sky"},{"id":"project-mwj2klyd-5gz2v","name":"Chess Club","emoji":"♟️","category":"Game","description":"","url":"https://sseliaswho-oss.github.io/Chess_Club/","tone":"mint"},{"id":"project-mwj2woby-0d9hl","name":"Comic Creater","emoji":"🎨","category":"Art","description":"","url":"https://sseliaswho-oss.github.io/Bella-Learning-Hub/comic","tone":"sun"}]}</script>
 </head>
 <body>
-  <main class="shell">
-    <nav class="topbar" aria-label="Site navigation"><div class="brand"><span class="brand-icon" aria-hidden="true">🌟</span> Bella's World</div><button id="open-setup" class="setup-button" type="button">⚙ Parent Setup</button></nav>
-    <header><span class="tagline">✦ Learn · Imagine · Shine ✦</span><h1>Hello, <span>Bella!</span> 🌈</h1><p class="subtitle">What would you like to explore today?</p></header>
-    <section class="cards" aria-label="Learning activities">
-      <article class="subject theatre"><div class="art"><span aria-hidden="true">🎭</span><small class="mini">PERFORM</small></div><h2>Little Star Theatre</h2><p>Become a star! Read, act, and explore exciting stories.</p><a class="launch" data-link="theatre" href="https://sseliaswho-oss.github.io/Little-Star-Theater/" aria-label="Open Little Star Theatre">Open adventure →</a></article>
-      <article class="subject writing"><div class="art"><span aria-hidden="true">📖</span><small class="mini">CREATE</small></div><h2>Creative Writing</h2><p>Dream up amazing characters and write your own adventures.</p><a class="launch" data-link="writing" href="https://ai-writing-private.sseliaswho.workers.dev" aria-label="Open Creative Writing">Open adventure →</a></article>
-      <article class="subject maths"><div class="art"><span aria-hidden="true">🧩</span><small class="mini">SOLVE</small></div><h2>Maths Quest</h2><p>Solve puzzles, spot patterns, and grow your maths superpowers.</p><a class="launch" data-link="maths" href="https://sseliaswho-oss.github.io/Learn-Math-with-Bella/" aria-label="Open Maths Quest">Open adventure →</a></article>
-      <article class="subject thinking"><div class="art"><span aria-hidden="true">🧠</span><small class="mini">THINK</small></div><h2>Thinking Skills</h2><p>Follow clues, test ideas, and become a confident problem solver.</p><a class="launch" data-link="thinking" href="https://sseliaswho-oss.github.io/Thinking-Skills/" aria-label="Open Thinking Skills">Open adventure →</a></article>
-       <article class="subject chess"><div class="art"><span aria-hidden="true">♟️</span><small class="mini">STRATEGISE</small></div><h2>Chess Thinking Skills</h2><p>Protect your pieces, solve chess puzzles, and think before every move.</p><a class="launch" data-link="chess" href="https://sseliaswho-oss.github.io/Chess_Club/" aria-label="Open Chess Thinking Skills">Open adventure →</a></article>
-    </section>
-    <aside class="note"><span class="symbol" aria-hidden="true">💛</span><span><strong>Every little step counts.</strong> Pick one adventure and have fun learning!</span></aside>
-    <footer>Made with love for Bella · One happy place to learn</footer>
-  </main>
-  <dialog id="settings" aria-labelledby="settings-title"><div class="modal-head"><div><h2 id="settings-title">Parent Setup ⚙</h2><p>Add the public web addresses of Bella's five learning activities.</p></div><button class="close" id="close-setup" aria-label="Close setup" type="button">×</button></div>
-    <div class="modal-body"><form id="link-form">
-      <label class="field"><span>🎭 Little Star Theatre</span><input id="theatre-url" type="url" inputmode="url" autocomplete="url" placeholder="https://...github.io/..."></label>
-      <label class="field"><span>📖 Creative Writing</span><input id="writing-url" type="url" inputmode="url" autocomplete="url" placeholder="https://...github.io/..."></label>
-      <label class="field"><span>🧩 Maths Quest</span><input id="maths-url" type="url" inputmode="url" autocomplete="url" placeholder="https://...github.io/..."></label>
-      <label class="field"><span>🧠 Thinking Skills</span><input id="thinking-url" type="url" inputmode="url" autocomplete="url" placeholder="https://...github.io/..."></label>
-       <label class="field"><span>♟️ Chess Thinking Skills</span><input id="chess-url" type="url" inputmode="url" autocomplete="url" placeholder="https://...github.io/.../chess/"></label>
-      <div class="instructions"><strong>How to use:</strong> Paste each website's live GitHub Pages URL (not its repository editing URL). Select <strong>Save &amp; Download</strong>, then upload the downloaded <code>index.html</code> to the GitHub repository for this hub. All devices will then see the same links.<br><br>You can save links locally for a preview, too. Local previews alone do not sync across devices.</div>
-      <div class="actions"><button class="btn" type="button" id="preview">Preview on this device</button><button class="btn primary" id="download" type="submit">Save &amp; Download index.html ↓</button></div>
-      <p id="message" role="status" aria-live="polite"></p>
-    </form></div>
-  </dialog>
-  <script>
-  (() => {
-    'use strict';
-    const keys = ['theatre','writing','maths','thinking','chess'];
-    const initial = JSON.parse(document.getElementById('site-config').textContent);
-    const links = {...initial};
-    const dialog = document.getElementById('settings');
-    const status = document.getElementById('message');
-    const isSafeUrl = value => {if (!value) return true;try { const u = new URL(value);return ['https:','http:'].includes(u.protocol) && !!u.hostname; } catch { return false; }};
-    const readForm = () => {
-      const result = {};
-      for (const k of keys) {
-        const value = document.getElementById(`${k}-url`).value.trim();
-        if (!isSafeUrl(value)) {status.textContent = 'Please enter a full web address beginning with https://';document.getElementById(`${k}-url`).focus();return null;}
-        result[k] = value;
-      }
-      return result;
-    };
-    const updateCards = () => {
-      for (const k of keys) {
-        const anchor = document.querySelector(`[data-link="${k}"]`);
-        const url = links[k] || '';
-        anchor.href = url || '#';
-        anchor.textContent = url ? 'Open adventure →' : 'Add website link ＋';
-        anchor.classList.toggle('unset', !url);
-      }
-    };
-    function savePreview() {
-      const values = readForm();
-      if (!values) return false;
-      Object.assign(links,values);
-      try {localStorage.setItem('bella-hub-preview',JSON.stringify(links));} catch {}
-      updateCards();
-      return true;
-    }
-    // Preview settings can fill blank links, but published site links win.
-    try {
-      const preview = JSON.parse(localStorage.getItem('bella-hub-preview') || '{}');
-      for (const k of keys) if (!links[k] && typeof preview[k] === 'string' && isSafeUrl(preview[k])) links[k] = preview[k];
-    } catch {}
-    updateCards();
-    document.getElementById('open-setup').addEventListener('click', () => {
-      for (const k of keys) document.getElementById(`${k}-url`).value = links[k] || '';
-      status.textContent = '';
-      if (dialog.showModal) dialog.showModal(); else dialog.setAttribute('open','');
-    });
-    document.getElementById('close-setup').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => {if (event.target === dialog) dialog.close();});
-    document.querySelectorAll('[data-link]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        const k = anchor.dataset.link;
-        if (!links[k]) {e.preventDefault();document.getElementById('open-setup').click();}
-      });
-    });
-    document.getElementById('preview').addEventListener('click', () => {
-      if (savePreview()) {status.textContent = 'Links saved for this device. Download and upload the page to share them on every device.';}
-    });
-    document.getElementById('link-form').addEventListener('submit', event => {
-      event.preventDefault();
-      if (!savePreview()) return;
-      // Export a complete single-file website with the supplied public links embedded.
-      const clone = document.documentElement.cloneNode(true);
-      clone.querySelector('#site-config').textContent = JSON.stringify(links).replace(/</g,'\\u003c');
-      const cloneDialog = clone.querySelector('#settings');
-      cloneDialog.removeAttribute('open');
-      clone.querySelector('#message').textContent = '';
-      const content = '<!doctype html>\n' + clone.outerHTML;
-      const blob = new Blob([content],{type:'text/html;charset=utf-8'});
-      const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = objectUrl;
-      a.download = 'index.html';
-      document.body.appendChild(a);
-      a.click();a.remove();
-      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
-      status.textContent = 'Downloaded index.html — replace your existing hub home page HTML in your GitHub Pages publishing folder.';
-    });
-  })();
-  </script>
+<main class="shell">
+<nav class="topbar" aria-label="Site navigation"><div class="brand"><span class="brand-icon" aria-hidden="true">🌟</span> Bella's World</div><button class="setup-button" id="open-setup" type="button">⚙ Parent Setup</button></nav>
+<header><span class="tagline">✦ LEARN · IMAGINE · SHINE ✦</span><h1>Hello, <span>Bella!</span> 🌈</h1><p class="subtitle">What would you like to explore today?</p></header>
+<section class="toolbar" aria-label="Find an adventure"><span class="count" id="project-count">6 adventures to explore</span><label><span class="visually-hidden">Search learning projects</span><input id="project-search" class="search" type="search" placeholder="🔍 Find an adventure..."></label></section>
+<section id="cards" class="cards" aria-label="Learning activities"></section>
+<aside class="note"><span class="symbol" aria-hidden="true">💛</span><span><strong>Every little step counts.</strong> Pick an adventure and have fun learning!</span></aside>
+<footer>Made with love for Bella · One happy place to learn</footer>
+</main>
+<dialog id="settings" aria-labelledby="settings-title"><div class="modal-head"><div><h2 id="settings-title">Parent Setup ⚙</h2><p>Add as many adventures as you like. Edit, remove, or rearrange them whenever you want.</p></div><button class="close" id="close-setup" aria-label="Close Parent Setup" type="button">×</button></div>
+<div class="modal-body">
+<div class="instructions"><strong>How it works:</strong> Changes save on this browser immediately. To make changes appear on <strong>every device</strong>, use <strong>Download updated index.html</strong> below and upload it to your existing GitHub Pages hub repository. No account, AI, or special service is needed.</div>
+<div class="manager-title"><h3>My Projects <span id="manager-count">(6)</span></h3><button class="btn primary" id="add-project" type="button">＋ Add a New Adventure</button></div>
+<div id="manager-list" class="manager-list" aria-label="Manage projects"></div>
+<div class="edit-panel" id="edit-panel" hidden="">
+<h3 id="editor-title">Add a New Adventure</h3>
+<form id="edit-form">
+<div class="fields">
+<label class="field"><span>Project name *</span><input id="edit-name" name="name" required="" maxlength="80" placeholder="e.g. Chess Club"></label>
+<label class="field"><span>Emoji icon</span><input id="edit-emoji" name="emoji" maxlength="20" placeholder="♟️"></label>
+<label class="field"><span>Category (optional)</span><input id="edit-category" name="category" maxlength="35" placeholder="e.g. Play &amp; Learn"></label>
+<label class="field"><span>Card colour</span><select id="edit-tone" name="tone"><option value="peach">Peach</option><option value="lilac">Lavender</option><option value="aqua">Aqua</option><option value="sun">Sunshine</option><option value="mint">Mint</option><option value="sky">Sky</option><option value="rose">Rose</option><option value="sand">Sand</option></select></label>
+<label class="field wide"><span>Website URL *</span><input id="edit-url" name="url" type="url" placeholder="https://username.github.io/project/" inputmode="url" autocomplete="url"></label>
+<label class="field wide"><span>Short description</span><textarea id="edit-description" name="description" maxlength="190" placeholder="What can Bella do here?"></textarea></label>
+</div>
+<div class="form-actions"><button type="submit" class="btn primary">Save Project</button><button type="button" class="btn" id="cancel-edit">Cancel</button></div>
+</form></div>
+<div class="publish-actions"><button class="btn primary" id="download-html" type="button">↓ Download updated index.html</button><button class="btn subtle" id="export-json" type="button">↓ Backup project links (.json)</button><button class="btn" id="import-json" type="button">↑ Import links (.json)</button></div>
+<input id="import-file" type="file" accept=".json,application/json" class="visually-hidden" aria-label="Choose a JSON backup of project links">
+<p class="help">You can reorder projects using ↑ and ↓. Downloaded HTML includes your links, names, icons, descriptions, colours, and order. Updating this hub does not delete the learning progress stored inside each separate learning website.</p>
+<p id="message" class="status" role="status" aria-live="polite"></p>
+</div></dialog>
+<script>
+(()=>{
+'use strict';
+const CONFIG_ID='hub-config';
+const DRAFT_KEY='bella-hub-project-draft-v2';
+const OLD_KEY='bella-hub-preview';
+const tones=new Set(['peach','lilac','aqua','sun','mint','sky','rose','sand']);
+const $=id=>document.getElementById(id);
+const dialog=$('settings');const status=$('message');
+const rawConfig=$('hub-config').textContent;
+const defaultProjects=[
+ {id:'theatre',name:'Little Star Theatre',emoji:'🎭',category:'Perform',description:'Become a star! Read, act, and explore exciting stories.',url:'',tone:'peach'},
+ {id:'writing',name:'Creative Writing',emoji:'📖',category:'Create',description:'Dream up amazing characters and write your own adventures.',url:'',tone:'lilac'},
+ {id:'maths',name:'Maths Quest',emoji:'🧩',category:'Solve',description:'Solve puzzles, spot patterns, and grow your maths superpowers.',url:'',tone:'aqua'}
+];
+const safeUrl=url=>{if(!url)return true;try{const u=new URL(url);return (u.protocol==='https:'||u.protocol==='http:')&&!!u.hostname;}catch{return false;}};
+const clean=(item,i)=>({
+ id:typeof item?.id==='string'&&item.id.trim()?item.id.trim():`imported-${i}`,
+ name:String(item?.name||'New Adventure').trim().slice(0,80),
+ emoji:String(item?.emoji||'✨').trim().slice(0,20)||'✨',
+ category:String(item?.category||'Explore').trim().slice(0,35)||'Explore',
+ description:String(item?.description||'').trim().slice(0,190),
+ url:typeof item?.url==='string'&&safeUrl(item.url.trim())?item.url.trim():'',
+ tone:tones.has(item?.tone)?item.tone:'sky'
+});
+const normalize=(input)=>{
+ if(Array.isArray(input))return input.filter(x=>x&&typeof x==='object'&&!Array.isArray(x)).map(clean);
+ if(input&&Array.isArray(input.projects))return input.projects.filter(x=>x&&typeof x==='object'&&!Array.isArray(x)).map(clean);
+ if(input&&typeof input==='object')return defaultProjects.map(p=>({...p,url:safeUrl(input[p.id])&&typeof input[p.id]==='string'?input[p.id]:''}));
+ return defaultProjects.map(x=>({...x}));
+};
+const unique=(items)=>{const ids=new Set();return items.map((v,i)=>{let id=v.id;while(ids.has(id)){id=`${v.id}-${i}-${Math.random().toString(36).slice(2,7)}`;}ids.add(id);return {...v,id};});};
+let embedded;try{embedded=JSON.parse(rawConfig);}catch{embedded={version:2,projects:defaultProjects};}
+let projects=unique(normalize(embedded));
+let activeId=null;
+function getDraft(){try{return JSON.parse(localStorage.getItem(DRAFT_KEY)||'null');}catch{return null;}}
+function persist(){try{localStorage.setItem(DRAFT_KEY,JSON.stringify({base:rawConfig,projects}));}catch{setStatus('This browser could not save a local preview. Download the updated HTML to keep your changes.',true);}}
+const draft=getDraft();
+if(draft&&draft.base===rawConfig&&Array.isArray(draft.projects))projects=unique(normalize(draft.projects));
+else if(!draft){ // Migrate link previews from the earlier three-card hub.
+ try{const old=JSON.parse(localStorage.getItem(OLD_KEY)||'null');if(old&&typeof old==='object'){projects=projects.map(p=>({...p,url:typeof old[p.id]==='string'&&safeUrl(old[p.id])?old[p.id]:p.url}));}}catch{}
+}
+function setStatus(msg,error=false){status.textContent=msg;status.classList.toggle('error',error);}
+function node(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el;}
+function renderCards(){
+ const q=$('project-search').value.trim().toLowerCase(),filtered=projects.filter(p=>(p.name+' '+p.category+' '+p.description).toLowerCase().includes(q));
+ $('cards').replaceChildren();$('project-count').textContent=`${projects.length} adventure${projects.length===1?'':'s'} to explore`;
+ filtered.forEach(p=>{
+  const article=node('article',`subject tone-${p.tone}`);
+  const art=node('div','art');const emoji=node('span','emoji',p.emoji);emoji.setAttribute('aria-hidden','true');art.append(emoji,node('small','mini',p.category));
+  article.append(art,node('h2','',p.name),node('p','',p.description||'Come and explore something new!'));
+  let button;
+  if(p.url){button=node('a','launch','Open adventure →');button.href=p.url;button.title=`Open ${p.name}`;}
+  else{button=node('button','launch unset','Set up this link ＋');button.type='button';button.addEventListener('click',()=>{openSetup();startEdit(p.id);});}
+  article.append(button);$('cards').append(article);
+ });
+
+ if(filtered.length===0&&q)$('cards').append(node('div','no-match','No adventures found. Try another search.'));
+}
+function managerButton(symbol,label,action,disabled=false,extra=''){
+ const b=node('button',`icon-btn ${extra}`,symbol);b.type='button';b.title=label;b.setAttribute('aria-label',label);b.disabled=disabled;b.addEventListener('click',action);return b;
+}
+function renderManager(){
+ $('manager-list').replaceChildren();$('manager-count').textContent=`(${projects.length})`;
+ if(!projects.length){$('manager-list').append(node('p','help','No projects yet. Choose “Add a New Adventure” to create one.'));return;}
+ projects.forEach((p,i)=>{
+ const item=node('div','manager-item');item.append(node('span','manager-icon',p.emoji));
+ const meta=node('div','manager-meta'),strong=node('strong','',p.name),small=node('small','',`${p.category} · ${p.url||'No link yet'}`);meta.append(strong,small);item.append(meta);
+ const actions=node('div','manager-actions');
+ actions.append(
+ managerButton('↑',`Move ${p.name} up`,()=>move(i,-1),i===0),
+ managerButton('↓',`Move ${p.name} down`,()=>move(i,1),i===projects.length-1),
+ managerButton('✎',`Edit ${p.name}`,()=>startEdit(p.id)),
+ managerButton('×',`Remove ${p.name}`,()=>remove(p.id),false,'delete'));
+ item.append(actions);$('manager-list').append(item);
+ });
+}
+function refresh(){persist();renderManager();renderCards();}
+function move(i,delta){const j=i+delta;if(j<0||j>=projects.length)return;[projects[i],projects[j]]=[projects[j],projects[i]];refresh();setStatus('Project order updated on this browser. Download index.html to publish it.');}
+function remove(id){const p=projects.find(x=>x.id===id);if(!p)return;if(!confirm(`Remove “${p.name}” from the hub?\nThis will not delete the original website or its learning records.`))return;projects=projects.filter(x=>x.id!==id);if(activeId===id)closeEditor();refresh();setStatus(`${p.name} removed from the hub on this browser.`);}
+function startEdit(id){activeId=id;const p=projects.find(x=>x.id===id);$('editor-title').textContent=p?`Edit: ${p.name}`:'Add a New Adventure';
+ $('edit-name').value=p?.name||'';$('edit-emoji').value=p?.emoji||'✨';$('edit-category').value=p?.category||'';$('edit-tone').value=p?.tone||'sky';$('edit-url').value=p?.url||'';$('edit-description').value=p?.description||'';
+ $('edit-panel').hidden=false;$('edit-panel').scrollIntoView({block:'nearest',behavior:'smooth'});$('edit-name').focus();}
+function closeEditor(){$('edit-panel').hidden=true;activeId=null;$('edit-form').reset();}
+function openSetup(){renderManager();setStatus('');if(dialog.showModal&&!dialog.open)dialog.showModal();else dialog.setAttribute('open','');}
+$('open-setup').addEventListener('click',openSetup);$('close-setup').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+$('project-search').addEventListener('input',renderCards);
+$('add-project').addEventListener('click',()=>startEdit(null));$('cancel-edit').addEventListener('click',closeEditor);
+$('edit-form').addEventListener('submit',e=>{
+ e.preventDefault();const name=$('edit-name').value.trim(),url=$('edit-url').value.trim();
+ if(!name){setStatus('Please enter a project name.',true);$('edit-name').focus();return;}
+ if(!safeUrl(url)){setStatus('Please enter a full website URL beginning with https:// or http://',true);$('edit-url').focus();return;}
+ const old=projects.find(p=>p.id===activeId);const item=clean({id:old?.id||`project-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`,name,emoji:$('edit-emoji').value,category:$('edit-category').value,description:$('edit-description').value,url,tone:$('edit-tone').value},projects.length);
+ if(old)projects=projects.map(p=>p.id===activeId?item:p);else projects.push(item);
+ closeEditor();refresh();setStatus(`${item.name} saved on this device. Download index.html to publish these changes.`);
+});
+function downloadFile(filename,body,type){const blob=new Blob([body],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function serialized(){return JSON.stringify({version:2,projects}).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');}
+$('download-html').addEventListener('click',()=>{
+ const clone=document.documentElement.cloneNode(true);clone.querySelector('#hub-config').textContent=serialized();clone.querySelector('#settings').removeAttribute('open');clone.querySelector('#edit-panel').hidden=true;clone.querySelector('#cards').replaceChildren();clone.querySelector('#manager-list').replaceChildren();clone.querySelector('#message').textContent='';
+ downloadFile('index.html','<!doctype html>\n'+clone.outerHTML,'text/html;charset=utf-8');setStatus('Downloaded index.html. Replace your GitHub Pages hub homepage with this file to update every device.');
+});
+$('export-json').addEventListener('click',()=>{downloadFile('bella-learning-hub-links.json',JSON.stringify({version:2,projects},null,2),'application/json;charset=utf-8');setStatus('Project links backed up as JSON.');});
+$('import-json').addEventListener('click',()=>$('import-file').click());
+$('import-file').addEventListener('change',async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{const data=JSON.parse(await file.text());if(!data||!Array.isArray(data.projects))throw new Error('This backup has no projects array.');const imported=unique(normalize(data));if(!confirm(`Replace your current ${projects.length} hub links with ${imported.length} from this backup?`))return;projects=imported;closeEditor();refresh();setStatus('Links imported on this device. Download index.html to publish them.');}
+ catch(error){setStatus(`Could not import links: ${error.message}`,true);}finally{e.target.value='';}
+});
+renderCards();
+})();
+</script>
 
 
 </body></html>
